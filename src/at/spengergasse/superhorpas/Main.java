@@ -3,6 +3,7 @@ package at.spengergasse.superhorpas;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
 
 
@@ -15,6 +16,8 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Super Herpes");
+			Image image = new Image("/at/spengergasse/superhorpas/icon.png");
+			primaryStage.getIcons().add(image);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
