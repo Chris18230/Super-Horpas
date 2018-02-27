@@ -1,0 +1,3 @@
+To Do:
+Ein besseres Icon machen
+Einigung auf die Klassen welche wir für das Spiel benötigen
