@@ -70,7 +70,9 @@ public class Launcher extends Stage{
 			buttonPane.setHgap(10);
 			// add components
 			buttonPane.getChildren().add(startBTN);
-			buttonPane.getChildren().add(closeBTN);
+//			buttonPane.getChildren().add(closeBTN);
+			
+			gridPane.add(startBTN, 50, 35);
 			
 			// add panes to borderpane
 			borderPane.setBottom(buttonPane);
