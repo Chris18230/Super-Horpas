@@ -3,6 +3,8 @@
  */
 package at.spengergasse.superhorpas;
 
+import java.awt.event.ActionListener;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,8 +39,6 @@ public class Launcher extends Stage{
 	
 	// buttons
 		final private Button startBTN;
-		final private Button closeBTN;
-		
 		// menu items
 		final MenuItem menuDefaultMI, menuCloseMI;
 
@@ -64,14 +64,12 @@ public class Launcher extends Stage{
 			FlowPane buttonPane=new FlowPane();
 			// default button
 			startBTN=new Button("Start");
-			// default button
-			closeBTN=new Button("Close");
-
+		
+			
 			buttonPane.setHgap(10);
 			// add components
 			buttonPane.getChildren().add(startBTN);
-			buttonPane.getChildren().add(closeBTN);
-			
+
 			// add panes to borderpane
 			borderPane.setBottom(buttonPane);
 			borderPane.setCenter(gridPane);
@@ -125,12 +123,6 @@ public class Launcher extends Stage{
 			return startBTN;
 		}
 		/**
-		 * @return the closeBTN
-		 */
-		public Button getCloseBTN() {
-			return closeBTN;
-		}
-		/**
 		 * @return the menuDefaultMI
 		 */
 		public MenuItem getMenuDefaultMI() {
@@ -142,4 +134,5 @@ public class Launcher extends Stage{
 		public MenuItem getMenuCloseMI() {
 			return menuCloseMI;
 		}
+
 }
