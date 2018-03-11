@@ -3,14 +3,17 @@
  */
 package at.spengergasse.superhorpas;
 
-import java.awt.event.ActionListener;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -20,16 +23,17 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import static java.lang.Math.random;
 
 /**
  * @author Miles
@@ -66,6 +70,8 @@ public class Launcher extends Stage{
 			startBTN=new Button("Start");
 		
 			
+
+			
 			buttonPane.setHgap(10);
 			// add components
 			buttonPane.getChildren().add(startBTN);
@@ -81,7 +87,7 @@ public class Launcher extends Stage{
 			centerOnScreen();
 			setResizable(false);
 
-			// create and add a menu
+			// create and add a menu	
 			MenuBar menuBar = new MenuBar();
 	        // Menu file, the underscore defines the following character for mnemonic
 			// there is method setMnemonicParsing - default is true
@@ -102,7 +108,7 @@ public class Launcher extends Stage{
 	        vBox.getChildren().addAll(menuBar,borderPane);
 
 			// set the scene and add borderpane to the scene
-			Scene scene=new Scene(vBox, 4267, 2133);
+			Scene scene=new Scene(vBox, 1000, 800);
 			setScene(scene);
 			sizeToScene();
 			//set Icon
@@ -114,6 +120,46 @@ public class Launcher extends Stage{
 	        Background background = new Background(backgroundImage);
 	        vBox.setBackground(background);
 			
+	        
+	        
+	        Group circles = new Group();
+	        for (int i = 0; i < 30; i++) {
+	           Circle circle = new Circle(150, Color.web("white", 0.05));
+	           circle.setStrokeType(StrokeType.OUTSIDE);
+	           circle.setStroke(Color.web("white", 0.16));
+	           circle.setStrokeWidth(4);
+	           circles.getChildren().add(circle);
+	        }
+	        borderPane.getChildren().add(circles);    
+	        
+	        
+			startBTN.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					System.out.println("test");
+					startBTN.setStyle("fx-background-color: black");
+					startBTN.resize(300, 200);
+					
+					Timeline timeline = new Timeline();
+					for (Node circle: circles.getChildren()) {
+					    timeline.getKeyFrames().addAll(
+					        new KeyFrame(Duration.ZERO, // set start position at 0
+					            new KeyValue(circle.translateXProperty(), random() * 800),
+					            new KeyValue(circle.translateYProperty(), random() * 600)
+					        ),
+					        new KeyFrame(new Duration(40000), // set end position at 40s
+					            new KeyValue(circle.translateXProperty(), random() * 800),
+					            new KeyValue(circle.translateYProperty(), random() * 600)
+					        )
+					    );
+					}
+					// play 40s of animation
+					timeline.play();
+				}
+				
+			});
+	        
 			// show frame
 			show();
 		}
