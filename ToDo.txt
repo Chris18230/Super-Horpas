@@ -1,11 +1,11 @@
 To Do: 21.2.2018
 -Ein besseres Icon machen
--Einigung auf die Klassen welche wir für das Spiel benötigen
+-Einigung auf die Klassen welche wir fï¿½r das Spiel benï¿½tigen
 
-Lösung:
-Klassen für das POS Projekt:
+Lï¿½sung:
+Klassen fï¿½r das POS Projekt:
 	-Packet: model
-		-Objekte(für jedes Objekt)
+		-Objekte(fï¿½r jedes Objekt)
 		-Gegner
 		-Falle
 		-Charakter
@@ -19,3 +19,7 @@ Klassen für das POS Projekt:
 To Do: 27.2.2018
 -Charakter Klasse bearbeiten
 -Launcher bearbeiten
+
+To Do: 6.3.2018
+-Launcher so weit wie mÃ¶glich fertigstellen
+-Listener anfangen zu schreiben

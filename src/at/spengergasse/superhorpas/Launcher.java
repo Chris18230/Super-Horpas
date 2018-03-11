@@ -70,6 +70,8 @@ public class Launcher extends Stage{
 			// add components
 			buttonPane.getChildren().add(startBTN);
 
+			gridPane.add(startBTN, 50, 35);
+
 			// add panes to borderpane
 			borderPane.setBottom(buttonPane);
 			borderPane.setCenter(gridPane);
