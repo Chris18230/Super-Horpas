@@ -108,7 +108,7 @@ public class Launcher extends Stage{
 	        vBox.getChildren().addAll(menuBar,borderPane);
 
 			// set the scene and add borderpane to the scene
-			Scene scene=new Scene(vBox, 1000, 800);
+			Scene scene=new Scene(vBox, 800, 450);
 			setScene(scene);
 			sizeToScene();
 			//set Icon
