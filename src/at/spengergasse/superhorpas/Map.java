@@ -61,14 +61,8 @@ public class Map extends Stage{
 			// set properties of the frame
 			setTitle("Super Horpas");
 			centerOnScreen();
-			setResizable(false);
+			setResizable(true);
 
-			// create and add a menu	
-			MenuBar menuBar = new MenuBar();
-	        // Menu file, the underscore defines the following character for mnemonic
-			// there is method setMnemonicParsing - default is true
-	        Menu menuFile = new Menu("_File");
-	 
 			// set the scene and add borderpane to the scene
 			Scene scene=new Scene(vBox, 800, 450);
 			setScene(scene);
@@ -81,7 +75,6 @@ public class Map extends Stage{
 			BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	        Background background = new Background(backgroundImage);
 	        vBox.setBackground(background);
-			
 	        
 			// show frame
 			show();
