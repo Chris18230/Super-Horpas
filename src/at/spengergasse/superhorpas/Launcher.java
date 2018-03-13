@@ -100,6 +100,9 @@ public class Launcher extends Stage{
 	 
 	        // menu edit
 	        Menu menuEdit = new Menu("_Edit");
+	        //Listener for StartBTN
+			startBTN.addEventHandler(ActionEvent.ACTION, actionListener::handle);
+			startBTN.setPrefWidth(200);
 	        // menu default
 	        menuDefaultMI = new MenuItem("Default");
 	        // menu close
@@ -172,7 +175,7 @@ public class Launcher extends Stage{
 		/**
 		 * @return the defaultBTN
 		 */
-		public Button getDefaultBTN() {
+		public Button getStartBTN() {
 			return startBTN;
 		}
 		/**
