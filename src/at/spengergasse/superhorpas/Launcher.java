@@ -81,7 +81,7 @@ public class Launcher extends Stage{
 			// add components
 			buttonPane.getChildren().add(startBTN);
 
-			gridPane.add(startBTN, 50, 35);
+			gridPane.add(startBTN, 30,20);
 
 			// add panes to borderpane
 			borderPane.setBottom(buttonPane);
@@ -127,37 +127,11 @@ public class Launcher extends Stage{
 			BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	        Background background = new Background(backgroundImage);
 	        vBox.setBackground(background);
-
-	        
-	        
-//			startBTN.setOnAction(new EventHandler<ActionEvent>()
-//					System.out.println("test");
-//					startBTN.setStyle("fx-background-color: black");
-//					startBTN.resize(300, 200);
-//					
-//					Timeline timeline = new Timeline();
-//					for (Node circle: circles.getChildren()) {
-//					    timeline.getKeyFrames().addAll(
-//					        new KeyFrame(Duration.ZERO, // set start position at 0
-//					            new KeyValue(circle.translateXProperty(), random() * 800),
-//					            new KeyValue(circle.translateYProperty(), random() * 600)
-//					        ),
-//					        new KeyFrame(new Duration(40000), // set end position at 40s
-//					            new KeyValue(circle.translateXProperty(), random() * 800),
-//					            new KeyValue(circle.translateYProperty(), random() * 600)
-//					        )
-//					    );
-//					}
-//					// play 40s of animation
-//					timeline.play();
-//				}
-				
 			
 	        
 			// show frame
-			
-		}
-			
+			show();
+			}
 		/**
 		 * @return the defaultBTN
 		 */

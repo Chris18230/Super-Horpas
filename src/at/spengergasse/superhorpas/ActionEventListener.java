@@ -26,7 +26,7 @@ public class ActionEventListener implements EventHandler<ActionEvent> {
 	 * @param simpleFrame
 	 */
 	public ActionEventListener(Launcher launcher){
-		this.launcher=launcher;
+	this.launcher=launcher;
 	}
 	@Override
 	public void handle(ActionEvent event) {
