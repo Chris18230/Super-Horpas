@@ -74,7 +74,7 @@ public class Launcher extends Stage{
 			startBTN=new Button("Start");
 		
 			// instanciate listener
-			actionListener=new ActionEventListener(this);
+			actionListener=new ActionEventListener(this,null,null);
 
 			
 			buttonPane.setHgap(10);
@@ -101,7 +101,7 @@ public class Launcher extends Stage{
 	        // menu edit
 	        Menu menuEdit = new Menu("_Edit");
 	        //Listener for StartBTN
-			startBTN.addEventHandler(ActionEvent.ACTION, actionListener::handle);
+			startBTN.addEventHandler(ActionEvent.ACTION, actionListener::handleAction);
 			startBTN.setPrefWidth(200);
 	        // menu default
 	        menuDefaultMI = new MenuItem("Default");
@@ -155,7 +155,7 @@ public class Launcher extends Stage{
 			
 	        
 			// show frame
-			
+			show();
 		}
 			
 		/**
