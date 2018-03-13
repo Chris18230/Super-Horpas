@@ -28,8 +28,6 @@ public class ActionEventListener implements EventHandler<ActionEvent> {
 	public ActionEventListener(Launcher launcher){
 		this.launcher=launcher;
 	}
-		
-	
 	@Override
 	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
