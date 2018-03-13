@@ -33,6 +33,7 @@ import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
 import static java.lang.Math.random;
 
 /**
@@ -46,6 +47,9 @@ public class Launcher extends Stage{
 		// menu items
 		final MenuItem menuDefaultMI, menuCloseMI;
 
+		// reference to the listener
+		final private ActionEventListener actionListener;	
+		
 		/**
 		 * 
 		 */
@@ -69,7 +73,8 @@ public class Launcher extends Stage{
 			// default button
 			startBTN=new Button("Start");
 		
-			
+			// instanciate listener
+			actionListener=new ActionEventListener(this);
 
 			
 			buttonPane.setHgap(10);
