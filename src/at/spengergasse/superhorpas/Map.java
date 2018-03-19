@@ -4,37 +4,19 @@
 package at.spengergasse.superhorpas;
 
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-
-import static java.lang.Math.random;
 
 /**
  * @author Miles
@@ -46,9 +28,6 @@ public class Map extends Stage{
 		public Map(){		
 			// top level pane: includes menubar + borderpane
 			VBox vBox=new VBox();
-			
-			// borderpane
-			BorderPane borderPane=new BorderPane();
 			
 			// gridpane contains rows and columns
 			GridPane gridPane=new GridPane();

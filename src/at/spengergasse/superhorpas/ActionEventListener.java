@@ -3,15 +3,11 @@
  */
 package at.spengergasse.superhorpas;
 
-import static java.lang.Math.random;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.util.Duration;
+
 
 /**
  * @author Miles
