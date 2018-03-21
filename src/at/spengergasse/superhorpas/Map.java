@@ -6,6 +6,7 @@ package at.spengergasse.superhorpas;
 import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
@@ -30,75 +31,86 @@ import javafx.stage.Stage;
 /**
  * @author Miles und Christian
  *
- */ 
-public class Map extends Stage {
+ */
+public class Map extends Stage{
 	final private ActionEventListener listener;
-
-	public Map() {
-		Group root = new Group();
-		GridPane grid = new GridPane();
-		Player p = new Player(false, new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
-		grid.getChildren().add(p.getImageView());
-		
-		
-		AnimationTimer gl = new AnimationTimer() {
+	
+		public Map(){		
+			// top level pane: includes menubar + borderpane
+			VBox vBox=new VBox();
 			
-			@Override
-			public void handle(long now) {
-				render();
-				update();
-			}
+			// gridpane contains rows and columns
+			GridPane gridPane=new GridPane();
+			gridPane.setPadding(new Insets(10,10,10,10));
 			
-			private void render() {
-				root.getChildren().clear();
-				grid.getChildren().clear();
-				root.getChildren().add(grid);	
-				root.getChildren().add(p.getImageView());
-			}
-
-			private void update() {
-				// Spielerbewegungen
-				if (p.isLeft() && !p.isRight()) {
-					p.linksBewegen();
-				} else if (p.isRight() && !p.isLeft()) {
-					p.rechtsBewegen();
+			// gap between the components
+			gridPane.setHgap(10);
+			gridPane.setVgap(10);
+			
+			GridPane grid = new GridPane();
+			Player p = new Player(false, new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
+			grid.getChildren().add(p.getImageView());
+			
+			
+			AnimationTimer gl = new AnimationTimer() {
+				
+				@Override
+				public void handle(long now) {
+					render();
+					update();
 				}
-				if (p.isUp() && !p.isDown()) {
-					p.obenBewegen();
-				} else if (p.isDown() && !p.isUp()) {
-					p.untenBewegen();
+				
+				private void render() {
+					grid.getChildren().clear();
 				}
+
+				private void update() {
+					// Spielerbewegungen
+					if (p.isLeft() && !p.isRight()) {
+						p.linksBewegen();
+					} else if (p.isRight() && !p.isLeft()) {
+						p.rechtsBewegen();
+					}
+					if (p.isUp() && !p.isDown()) {
+						p.obenBewegen();
+					} else if (p.isDown() && !p.isUp()) {
+						p.untenBewegen();
+					}
+				}
+			};
+			
+			// borderpane
+			BorderPane borderPane = new BorderPane();
+			
+			//add grid to borderPane
+			borderPane.setCenter(grid);
+			
+			//add borderPane to vBox
+			vBox.getChildren().addAll(borderPane);
+			
+			// instanciate listener
+			listener=new ActionEventListener(null,this,p);
+			
+			// set properties of the frame
+			setTitle("Super Horpas");
+			centerOnScreen();
+			setResizable(true);
+
+			// set the scene and add borderpane to the scene
+			Scene scene=new Scene(vBox, 800, 450);
+			setScene(scene);
+			sizeToScene();
+			//set Icon
+			Image image = new Image("/at/spengergasse/superhorpas/icon.png");
+			getIcons().add(image);
+			
+			Image imgBackground = new Image(getClass().getResource("/at/spengergasse/superhorpas/game.jpg").toExternalForm());
+			BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+	        Background background = new Background(backgroundImage);
+	        vBox.setBackground(background);
+	        scene.addEventHandler(KeyEvent.KEY_PRESSED, listener);
+			scene.addEventHandler(KeyEvent.KEY_RELEASED, listener);
+			// show frame
+			show();
 			}
-		};
-		
-		// top level pane: includes menubar + borderpane
-		VBox vBox = new VBox();
-
-		// borderpane
-		BorderPane borderPane = new BorderPane();
-		
-		//add grid to borderPane
-		borderPane.setCenter(grid);
-		
-		//add borderPane to vBox
-		vBox.getChildren().addAll(borderPane);
-		
-		// instanciate listener
-		listener=new ActionEventListener(null,this,p);
-		
-		
-		// set the scene and add borderpane to the scene
-		Scene scene = new Scene(vBox, 800, 450);
-		setScene(scene);
-		sizeToScene();
-		centerOnScreen();
-		setTitle("Super Horpas");
-		// set Icon
-		Image image = new Image("/at/spengergasse/superhorpas/icon.png");
-		getIcons().add(image);
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, listener);
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, listener);
-		show();
-
-	}
 }

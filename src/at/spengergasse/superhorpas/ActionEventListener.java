@@ -3,10 +3,7 @@
  */
 package at.spengergasse.superhorpas;
 
-import static java.lang.Math.random;
-
 import java.io.IOException;
-
 import at.spengergasse.model.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
