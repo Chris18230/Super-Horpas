@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -37,7 +38,7 @@ import javafx.util.Duration;
 import static java.lang.Math.random;
 
 /**
- * @author Miles
+ * @author Miles und Christian
  *
  */
 public class Launcher extends Stage{
@@ -70,21 +71,13 @@ public class Launcher extends Stage{
 			
 			//flowpane for buttons
 			FlowPane buttonPane=new FlowPane();
-			// default button
+			//start button
 			startBTN=new Button("Start");
-		
 			// instanciate listener
 			actionListener=new ActionEventListener(this,null,null);
 
 			
-			buttonPane.setHgap(10);
-			// add components
-			buttonPane.getChildren().add(startBTN);
-
-			gridPane.add(startBTN, 50, 35);
-
-			// add panes to borderpane
-			borderPane.setBottom(buttonPane);
+			gridPane.add(startBTN,30,20);
 			borderPane.setCenter(gridPane);
 			
 			// set properties of the frame

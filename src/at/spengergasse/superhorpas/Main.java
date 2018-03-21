@@ -7,7 +7,11 @@ import javafx.stage.Stage;
 
 
 
-
+/**
+ * 
+ * @author Miles und Christian
+ *
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

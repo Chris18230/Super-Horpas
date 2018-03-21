@@ -19,7 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 /**
- * @author Miles
+ * @author Miles und Christian
  *
  */
 public class ActionEventListener implements EventHandler<KeyEvent> {
