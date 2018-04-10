@@ -4,10 +4,10 @@ public class Collision {
 	private boolean hit;
 	
 	private int[][] collision = new int[][] {
-		{8,5},
-		{8,45},
-		{40,5},
-		{40,45}
+		{80,50},
+		{80,450},
+		{400,50},
+		{400,450}
 	};
 	
 	public Collision() {
@@ -26,6 +26,4 @@ public class Collision {
 	public void setCollision(int[][] collision) {
 		this.collision = collision;
 	}
-	
-	
 }

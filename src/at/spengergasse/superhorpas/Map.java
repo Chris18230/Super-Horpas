@@ -39,16 +39,15 @@ public class Map extends Stage{
 			gridPane.setHgap(10);
 			gridPane.setVgap(10);
 			
-			GridPane grid = new GridPane();
 			Player p = new Player(new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
-			grid.getChildren().add(p.getImageView());
+			gridPane.getChildren().add(p.getImageView());
 			
 			
 			// borderpane
 			BorderPane borderPane = new BorderPane();
 			
 			//add grid to borderPane
-			borderPane.setCenter(grid);
+			borderPane.setCenter(gridPane);
 			
 			//add borderPane to vBox
 			vBox.getChildren().addAll(borderPane);

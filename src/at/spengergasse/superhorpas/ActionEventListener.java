@@ -45,10 +45,8 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 		if (event.getEventType() == KeyEvent.KEY_PRESSED) {
 			// Bewegungen
 			if (event.getCode() == KeyCode.A) {
-				System.out.println("a");
 				p1.setLeft(true);
 			} else if (event.getCode() == KeyCode.D) {
-				System.out.println("d");
 				p1.setRight(true);
 			} else if (event.getCode() == KeyCode.W) {
 				p1.setUp(true);
@@ -71,5 +69,4 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 			}
 		}
 	}
-
 }
