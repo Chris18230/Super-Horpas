@@ -3,17 +3,11 @@
  */
 package at.spengergasse.superhorpas;
 
-import java.io.IOException;
 import at.spengergasse.model.Player;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.util.Duration;
 
 /**
  * @author Miles und Christian
@@ -22,7 +16,6 @@ import javafx.util.Duration;
 public class ActionEventListener implements EventHandler<KeyEvent> {
 	// reference to panel
 	final private Launcher launcher;
-	final private Map map;
 	final private Player p1;
 
 	/**
@@ -31,7 +24,6 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 	 */
 	public ActionEventListener(Launcher launcher, Map map, Player p1) {
 		this.launcher = launcher;
-		this.map = map;
 		this.p1 = p1;
 	}
 
@@ -53,8 +45,10 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 		if (event.getEventType() == KeyEvent.KEY_PRESSED) {
 			// Bewegungen
 			if (event.getCode() == KeyCode.A) {
+				System.out.println("a");
 				p1.setLeft(true);
 			} else if (event.getCode() == KeyCode.D) {
+				System.out.println("d");
 				p1.setRight(true);
 			} else if (event.getCode() == KeyCode.W) {
 				p1.setUp(true);

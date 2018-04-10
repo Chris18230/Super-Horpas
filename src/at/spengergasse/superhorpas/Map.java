@@ -5,11 +5,8 @@ package at.spengergasse.superhorpas;
 
 import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
-import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -18,14 +15,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -48,36 +40,9 @@ public class Map extends Stage{
 			gridPane.setVgap(10);
 			
 			GridPane grid = new GridPane();
-			Player p = new Player(false, new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
+			Player p = new Player(new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
 			grid.getChildren().add(p.getImageView());
 			
-			
-			AnimationTimer gl = new AnimationTimer() {
-				
-				@Override
-				public void handle(long now) {
-					render();
-					update();
-				}
-				
-				private void render() {
-					grid.getChildren().clear();
-				}
-
-				private void update() {
-					// Spielerbewegungen
-					if (p.isLeft() && !p.isRight()) {
-						p.linksBewegen();
-					} else if (p.isRight() && !p.isLeft()) {
-						p.rechtsBewegen();
-					}
-					if (p.isUp() && !p.isDown()) {
-						p.obenBewegen();
-					} else if (p.isDown() && !p.isUp()) {
-						p.untenBewegen();
-					}
-				}
-			};
 			
 			// borderpane
 			BorderPane borderPane = new BorderPane();
