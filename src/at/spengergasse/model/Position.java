@@ -1,5 +1,7 @@
 package at.spengergasse.model;
 
+
+
 public class Position {
 	private int x;
 	private int y;
@@ -15,7 +17,7 @@ public class Position {
 	}
 
 	public void setX(int x) {
-		if(this.x + x > 100 && this.x + x < 1100) {
+		if(this.x + x > 0 && this.x + x < 99999) {
 			this.x = x;
 		}
 	}
@@ -25,7 +27,7 @@ public class Position {
 	}
 
 	public void setY(int y) {
-		if(this.y + y < 1100 && this.y + y > 100) {
+		if(this.y + y < 1100000 && this.y + y > 0) {
 			this.y = y;
 		} else {
 			if(this.y < 55) {
