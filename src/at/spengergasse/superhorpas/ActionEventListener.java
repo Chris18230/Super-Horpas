@@ -52,8 +52,15 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 				p1.setUp(true);
 			} else if (event.getCode() == KeyCode.S) {
 				p1.setDown(true);
+			} else if( event.getCode() == KeyCode.DOWN) {
+				p1.setDown(true);
+			} else if (event.getCode() == KeyCode.UP) {
+				p1.setUp(true);
+			} else if (event.getCode() == KeyCode.RIGHT) {
+				p1.setRight(true);
+			} else if (event.getCode() == KeyCode.LEFT) {
+				p1.setLeft(true);
 			}
-		}
 		if (event.getEventType() == KeyEvent.KEY_RELEASED) {
 			if (event.getCode() == KeyCode.A) {
 				p1.setLeft(false);
@@ -66,7 +73,16 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 			}
 			if (event.getCode() == KeyCode.S) {
 				p1.setDown(false);
+			} else if( event.getCode() == KeyCode.DOWN) {
+				p1.setDown(false);
+			} else if (event.getCode() == KeyCode.UP) {
+				p1.setUp(false);
+			} else if (event.getCode() == KeyCode.RIGHT) {
+				p1.setRight(false);
+			} else if (event.getCode() == KeyCode.LEFT) {
+				p1.setLeft(false);
 			}
 		}
+	}
 	}
 }

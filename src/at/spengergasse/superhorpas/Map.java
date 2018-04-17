@@ -5,6 +5,7 @@ package at.spengergasse.superhorpas;
 
 import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -25,6 +26,7 @@ import javafx.stage.Stage;
  *
  */
 public class Map extends Stage{
+	private static final double GRAVITY = 0.2;
 	final private ActionEventListener listener;
 	
 		public Map(){		
@@ -40,6 +42,16 @@ public class Map extends Stage{
 			gridPane.setVgap(10);
 			
 			Player p = new Player(new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
+		
+			AnimationTimer timer = new AnimationTimer() {
+				
+				@Override
+				public void handle(long now) {
+					p.setV(p.getV()+GRAVITY);
+					p.fall();
+				}
+			};
+			timer.start();
 			gridPane.getChildren().add(p.getImageView());
 			
 			
