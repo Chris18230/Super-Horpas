@@ -3,6 +3,8 @@
  */
 package at.spengergasse.superhorpas;
 
+
+import at.spengergasse.model.Objects;
 import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
 import javafx.animation.AnimationTimer;
@@ -41,20 +43,35 @@ public class Map extends Stage{
 			gridPane.setHgap(10);
 			gridPane.setVgap(10);
 			
-			Player p = new Player(new Position(50,50), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
+			Player p = new Player(new Position(0,772.5), new ImageView("/at/spengergasse/superhorpas/Player1.png"));
+			Objects o = new Objects(new Position(0,800), new ImageView("/at/spengergasse/superhorpas/Brett.jpg"));
+			Objects o1 = new Objects(new Position(1720,150), new ImageView("/at/spengergasse/superhorpas/Brett.jpg"));
 		
-			AnimationTimer timer = new AnimationTimer() {
-				
-				@Override
-				public void handle(long now) {
-					p.setV(p.getV()+GRAVITY);
-					p.fall();
-				}
-			};
-			timer.start();
+			
 			gridPane.getChildren().add(p.getImageView());
-			
-			
+			gridPane.getChildren().add(o.getBlock());
+			gridPane.getChildren().add(o1.getBlock());
+			AnimationTimer animator = new AnimationTimer() {
+		        public void handle(long arg0) {
+		            double playX = p.getPos().getX(), objectX = o.getPos().getX();
+		            double playY = p.getPos().getY(), objectY = o.getPos().getY();
+		            System.out.println("Player's X: "+ playX + "\n" + "Objects's X: " + objectX);
+		            System.out.println("Player's Y: "+ playY + "\n" + "Object's Y: " + objectY);
+
+		            
+		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == true)
+		            {
+		                p.setDown(false); p.setRight(false);
+		            }
+		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == true)
+		            {
+		                p.setDown(false); p.setLeft(false);
+		            }
+
+		        }//handle
+		    };
+		    animator.start();//animation
+
 			// borderpane
 			BorderPane borderPane = new BorderPane();
 			
