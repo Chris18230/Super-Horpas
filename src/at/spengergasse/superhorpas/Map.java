@@ -70,10 +70,10 @@ public class Map extends Stage{
 //		            {
 //		               p.setDown(false); p.setRight(false); p.setUp(false);
 //		            }
-		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == false)
-		            {
-		            	p.fall();
-		            }
+//		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == false)
+//		            {
+//		            	p.fall();
+//		            }
 
 
 		        }//handle
