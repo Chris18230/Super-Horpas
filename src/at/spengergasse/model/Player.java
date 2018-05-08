@@ -5,9 +5,11 @@ import javafx.scene.image.ImageView;
 
 public class Player {
 	
+	private static final int JUMP_BOOST = -10;
+	private static final double GRAVITATION = 0.2;
 	private Position pos;
 	private ImageView player;
-	private double v  = - 10;
+	private double v  = JUMP_BOOST;
 	public Player(Position pos,ImageView image) {
 		// TODO Auto-generated constructor stub
 		setPos(pos);
@@ -16,71 +18,78 @@ public class Player {
 		image.setTranslateY(pos.getY());
 	}
 	
-	
-	
+	private boolean springen;
+	private boolean inDerLuft = false;
 	public void springen() {
-		pos.setY(pos.getY()-20);
+		pos.setY(pos.getY()+10);
 		player.setTranslateY(pos.getY());
 	}
 	public void setSpringen(boolean springen) {
-		springen();
-		checkCollision();
+		this.springen = springen;
 	}
 	
 	
-	
+	private boolean left;
 	public void linksBewegen(){
-		pos.setX(pos.getX()-20);
+		pos.setX(pos.getX()-5);
 		player.setTranslateX(pos.getX());
 	}
 	public void setLeft(boolean left) {
-		linksBewegen();
-		checkCollision();
+		this.left = left;
 	}
 	
 	
 	
-	
+	private boolean right;
 	public void rechtsBewegen(){
-		pos.setX(pos.getX()+20);
+		pos.setX(pos.getX()+5);
 		player.setTranslateX(pos.getX());
 	}
 	public void setRight(boolean right) {
-		rechtsBewegen();
-		checkCollision();
+		this.right = right;
 	}
-	
-	
-	
-	
-	public void obenBewegen(){
-		pos.setY(pos.getY()-20);
-		player.setTranslateY(pos.getY());
-		
-	}
-	public void setUp(boolean up) {
-		obenBewegen();
-		checkCollision();
-	}
-	
-	
 	
 	
 	public void untenBewegen(){
 		pos.setY(pos.getY()+20);
 		player.setTranslateY(pos.getY());
 	}
+	
+	private boolean down;
 	public void setDown(boolean down) {
-		untenBewegen();
-		checkCollision();
+		this.down = down;
 	}
 	
 	
 	public void fall() {
+		v+=GRAVITATION;
 		pos.setY(pos.getY()+v);
 		player.setTranslateY(pos.getY());
 	}
 	
+	private Position oldPos = new Position(0., 0.);
+	public void update() {
+		oldPos.setX(pos.getX());
+		oldPos.setY(pos.getY());
+		if(springen) {
+			if(!inDerLuft) {
+				v = JUMP_BOOST;
+				inDerLuft = true;
+			}
+			springen = false;
+		} if(left) {
+			linksBewegen();
+		} if(right) {
+			rechtsBewegen();
+		}
+		fall();
+	}
+	
+	public void bodenErreicht() {
+		pos.setY(oldPos.getY());
+		v = 0;
+		inDerLuft = false;
+	}
 	
 	public Position getPos() {
 		return pos;
@@ -106,8 +115,6 @@ public class Player {
 	public void checkCollision() {
 		System.out.println("CurentPosition: " + pos.getX() + " , " + pos.getY());
 	}
-	public void setV(double v) {
-		this.v = v;
-	}
+
 	
 }

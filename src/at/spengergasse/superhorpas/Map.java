@@ -15,6 +15,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -68,17 +69,18 @@ public class Map extends Stage{
 		        public void handle(long arg0) {
 		            double playX = p.getPos().getX(), objectX = o.getPos().getX();
 		            double playY = p.getPos().getY(), objectY = o.getPos().getY();
-		            System.out.println("Player's X: "+ playX + "\n" + "Objects's X: " + objectX);
-		            System.out.println("Player's Y: "+ playY + "\n" + "Object's Y: " + objectY);
+//		            System.out.println("Player's X: "+ playX + "\n" + "Objects's X: " + objectX);
+//		            System.out.println("Player's Y: "+ playY + "\n" + "Object's Y: " + objectY);
 
+		            p.update();
 		            
-		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == true)
+		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()))
 		            {
-		               p.setDown(false); p.setRight(false); p.setUp(false);
+		            	p.bodenErreicht();
 		            }
-		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == true)
+		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()))
 		            {
-		            	p.setLeft(false); p.setUp(false); p.setDown(false);
+		            	p.bodenErreicht();
 		            }
 //		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == false)
 //		            {
