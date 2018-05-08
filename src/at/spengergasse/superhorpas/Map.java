@@ -28,7 +28,6 @@ import javafx.stage.Stage;
  *
  */
 public class Map extends Stage{
-	private static final double GRAVITY = 0.2;
 	final private ActionEventListener listener;
 	
 		public Map(){		
@@ -61,12 +60,21 @@ public class Map extends Stage{
 		            
 		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == true)
 		            {
-		                p.setDown(false); p.setRight(false);
+		               p.setDown(false); p.setRight(false); p.setUp(false);
 		            }
 		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == true)
 		            {
-		                p.setDown(false); p.setLeft(false);
+		            	p.setLeft(false); p.setUp(false); p.setDown(false);
 		            }
+//		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == false)
+//		            {
+//		               p.setDown(false); p.setRight(false); p.setUp(false);
+//		            }
+		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == false)
+		            {
+		            	p.fall();
+		            }
+
 
 		        }//handle
 		    };
