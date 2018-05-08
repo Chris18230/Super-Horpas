@@ -60,7 +60,7 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 				p1.setRight(true);
 			} else if (event.getCode() == KeyCode.LEFT) {
 				p1.setLeft(true);
-			} else if (event.getCode() == KeyCode.ALT) {
+			} else if (event.getCode() == KeyCode.SPACE) {
 				p1.setSpringen(true);
 			}
 		if (event.getEventType() == KeyEvent.KEY_RELEASED) {
@@ -83,7 +83,7 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 				p1.setRight(false);
 			} else if (event.getCode() == KeyCode.LEFT) {
 				p1.setLeft(false);
-			} else if (event.getCode() == KeyCode.ALT) {
+			} else if (event.getCode() == KeyCode.SPACE) {
 				p1.setSpringen(false);
 			}
 		}

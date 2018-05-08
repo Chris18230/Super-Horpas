@@ -4,12 +4,19 @@
 package at.spengergasse.superhorpas;
 
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
+
 import at.spengergasse.model.Objects;
 import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -20,7 +27,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -29,7 +38,7 @@ import javafx.stage.Stage;
  */
 public class Map extends Stage{
 	final private ActionEventListener listener;
-	
+
 		public Map(){		
 			// top level pane: includes menubar + borderpane
 			VBox vBox=new VBox();
@@ -46,11 +55,16 @@ public class Map extends Stage{
 			Objects o = new Objects(new Position(0,800), new ImageView("/at/spengergasse/superhorpas/Brett.jpg"));
 			Objects o1 = new Objects(new Position(1720,150), new ImageView("/at/spengergasse/superhorpas/Brett.jpg"));
 		
-			
 			gridPane.getChildren().add(p.getImageView());
 			gridPane.getChildren().add(o.getBlock());
 			gridPane.getChildren().add(o1.getBlock());
+			Label zeit = new Label();
+			zeit.setTextFill(Color.web("#0076a3"));
+	    	zeit.setMaxSize(150,45);
+			Instant start = Instant.now();
+			gridPane.getChildren().add(zeit);
 			AnimationTimer animator = new AnimationTimer() {
+				Instant now = Instant.now();
 		        public void handle(long arg0) {
 		            double playX = p.getPos().getX(), objectX = o.getPos().getX();
 		            double playY = p.getPos().getY(), objectY = o.getPos().getY();
@@ -74,12 +88,13 @@ public class Map extends Stage{
 //		            {
 //		            	p.fall();
 //		            }
-
-
+	        		now = Instant.now();
+	        		Duration e = Duration.between(start, now);
+			    	zeit.setText("Time: " + e.ofSeconds(e.getSeconds()).toMinutes() + ":" + e.toMillis()/100);  
 		        }//handle
 		    };
 		    animator.start();//animation
-
+		   
 			// borderpane
 			BorderPane borderPane = new BorderPane();
 			
