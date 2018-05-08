@@ -17,9 +17,8 @@ public class Player {
 	}
 	
 	
-	
 	public void springen() {
-		pos.setY(pos.getY()-20);
+		pos.setY(pos.getY()+20);
 		player.setTranslateY(pos.getY());
 	}
 	public void setSpringen(boolean springen) {
@@ -64,15 +63,14 @@ public class Player {
 	}
 	
 	
-	
-	
 	public void untenBewegen(){
 		pos.setY(pos.getY()+20);
 		player.setTranslateY(pos.getY());
 	}
+	
+	private boolean down;
 	public void setDown(boolean down) {
-		untenBewegen();
-		checkCollision();
+		this.down = down;
 	}
 	
 	
@@ -81,6 +79,18 @@ public class Player {
 		player.setTranslateY(pos.getY());
 	}
 	
+	private Position oldPos = new Position(0., 0.);
+	public void update() {
+		oldPos.setX(pos.getX());
+		oldPos.setY(pos.getY());
+		if(down) {
+			untenBewegen();
+		}
+	}
+	
+	public void undoFall() {
+		pos.setY(oldPos.getY());
+	}
 	
 	public Position getPos() {
 		return pos;

@@ -9,6 +9,7 @@ import at.spengergasse.model.Player;
 import at.spengergasse.model.Position;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -57,14 +58,15 @@ public class Map extends Stage{
 		            System.out.println("Player's X: "+ playX + "\n" + "Objects's X: " + objectX);
 		            System.out.println("Player's Y: "+ playY + "\n" + "Object's Y: " + objectY);
 
+		            p.update();
 		            
-		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()) == true)
+		            if(p.getImageView().getBoundsInParent().intersects(o.getBlock().getBoundsInParent()))
 		            {
-		               p.setDown(false); p.setRight(false); p.setUp(false);
+		            	p.undoFall();
 		            }
-		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == true)
+		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()))
 		            {
-		            	p.setLeft(false); p.setUp(false); p.setDown(false);
+		            	p.undoFall();
 		            }
 //		            if(p.getImageView().getBoundsInParent().intersects(o1.getBlock().getBoundsInParent()) == false)
 //		            {
