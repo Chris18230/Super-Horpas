@@ -3,5 +3,7 @@ Haben uns mit gitHub verbunden
 Das Projekt erstellt
 Ein Icon erstellt und eingefuegt, hatten einen Fehler. Mitllerweile behoben.
 Stand 27.2.2018:
-Haben uns auf die benötigten Klassen fürs Projekt geeinigt.
+Haben uns auf die benï¿½tigten Klassen fï¿½rs Projekt geeinigt.
 Haben mit Geometrical Figures begonnen(halbfertig). 
+Stand 8.5.2018
+Haben eine Zeit hinzugefÃ¼gt und haben eine Links/Rechts/Springen animation hinzugefÃ¼gt
