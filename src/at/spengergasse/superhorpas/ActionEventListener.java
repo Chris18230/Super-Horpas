@@ -3,11 +3,13 @@
  */
 package at.spengergasse.superhorpas;
 
+import at.spengergasse.model.MusicPlayer;
 import at.spengergasse.model.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * @author Miles und Christian
@@ -25,6 +27,7 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 	public ActionEventListener(Launcher launcher, Map map, Player p1) {
 		this.launcher = launcher;
 		this.p1 = p1;
+		
 	}
 
 	/**
@@ -35,6 +38,10 @@ public class ActionEventListener implements EventHandler<KeyEvent> {
 		Object source = event.getSource();
 		if (source == launcher.getStartBTN()) {
 			new Map();
+			
+			MusicPlayer mplayer = new MusicPlayer(false);
+			mplayer.playSound();
+			
 			launcher.close();
 		}
 	}

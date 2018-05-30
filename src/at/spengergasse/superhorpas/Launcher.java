@@ -4,6 +4,9 @@
 package at.spengergasse.superhorpas;
 
 
+import java.io.File;
+
+import at.spengergasse.model.MusicPlayer;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -20,6 +23,8 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +40,9 @@ public class Launcher extends Stage{
 
 		// reference to the listener
 		final private ActionEventListener actionListener;	
+		
+		
+		private MusicPlayer mPlayer;
 		
 		/**
 		 * 
@@ -102,7 +110,6 @@ public class Launcher extends Stage{
 			BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	        Background background = new Background(backgroundImage);
 	        vBox.setBackground(background);
-			
 	        
 			// show frame
 			show();
